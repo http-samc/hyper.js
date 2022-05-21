@@ -40,7 +40,7 @@ const res = await Product.create(client, body)
 const create = async (client: HyperApiClient, body: ProductBodyCreate): Promise<HyperApiResponse> => {
     // TODO: Type guard for body
     let res = await fetch(`https://api.hyper.co/v6/products`, {
-        method: 'CREATE',
+        method: 'POST',
         headers: {
             'Authorization': `Bearer ${client.apiKey}`
         },

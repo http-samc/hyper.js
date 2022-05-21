@@ -1,6 +1,6 @@
 import { HyperApiClient, HyperApiResponse } from "../types";
 
-type LicenseMetadata = {
+type LicenseMetadataUpdate = {
     [key: string]: string
 }
 
@@ -11,7 +11,7 @@ type LicenseMetadata = {
  * @docs https://docs.hyper.co/reference/update-license-metadata
  * @param client (HyperApiClient) The client to use for the request
  * @param license (string) The key of the license to update
- * @param metadata (LicenseMetadata) An object with key/value pairs provided,
+ * @param metadata (LicenseMetadataUpdate) An object with key/value pairs provided,
  * where values are provided only as strings.
  * @returns HyperApiResponse
  * @example
@@ -30,7 +30,7 @@ const res = await License.updateMetadata(client, license, metadata)
 ```
 */
 
-const updateMetadata = async (client: HyperApiClient, license: string, metadata: LicenseMetadata): Promise<HyperApiResponse> => {
+const updateMetadata = async (client: HyperApiClient, license: string, metadata: LicenseMetadataUpdate): Promise<HyperApiResponse> => {
     if (!license || typeof license !== 'string') {
         throw Error(`license = "${license}" (type ${typeof license}) is not a truthy string.`);
     }

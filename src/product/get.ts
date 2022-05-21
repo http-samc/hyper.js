@@ -7,7 +7,7 @@ import { HyperApiClient, HyperApiResponse } from "../types";
  * of an `ok` boolean for error handling.
  * @docs https://docs.hyper.co/reference/retrieve-product
  * @param client (HyperApiClient) The client to use for the request
- * @param product (string) The key of the license to fetch
+ * @param product (string) The name of the product to fetch
  * @returns HyperApiResponse
  * @example
 ```js
@@ -23,7 +23,7 @@ const res = await Product.get(client, product)
 
 const get = async (client: HyperApiClient, product: string): Promise<HyperApiResponse> => {
     if (!product || typeof product !== 'string') {
-        throw Error(`license = "${product}" (type ${typeof product}) is not a truthy string.`);
+        throw Error(`link = "${product}" (type ${typeof product}) is not a truthy string.`);
     }
     let res = await fetch(`https://api.hyper.co/v6/products/${product}`, {
         method: 'GET',

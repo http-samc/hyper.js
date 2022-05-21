@@ -1,7 +1,7 @@
 import { HyperApiClient, HyperApiResponse } from "../types";
 
 // TODO: Convert snake_case keys to camelCase within SDK only
-type ProductBody = {
+type ProductBodyUpdate = {
     name?: string
     image?: string
     description?: string
@@ -26,13 +26,13 @@ type ProductBody = {
 }
 
 /**
- * @description Updates a product, given its key and new value(s).
+ * @description Updates a product, given its name and new value(s).
  * Called asynchronously with `await`. All data is provided as-is from the server,
  * with the addition of an `ok` boolean for error handling.
  * @docs https://docs.hyper.co/reference/update-product
  * @param client (HyperApiClient) The client to use for the request
- * @param product (string) The key of the license to update
- * @param body (ProductBody) An object with the updated key/value pairs provided
+ * @param product (string) The name of the product to update
+ * @param body (ProductBodyUpdate) An object with the updated key/value pairs provided
  * @returns HyperApiResponse
  * @example
 ```js
@@ -50,11 +50,11 @@ const res = await Product.update(client, product, body)
 ```
 */
 
-const update = async (client: HyperApiClient, product: string, body: ProductBody): Promise<HyperApiResponse> => {
+const update = async (client: HyperApiClient, product: string, body: ProductBodyUpdate): Promise<HyperApiResponse> => {
     if (!product || typeof product !== 'string') {
-        throw Error(`license = "${product}" (type ${typeof product}) is not a truthy string.`);
+        throw Error(`link = "${product}" (type ${typeof product}) is not a truthy string.`);
     }
-    // TODO: Check ProductBody w/ type gaurd
+    // TODO: Check body w/ type gaurd
     let res = await fetch(`https://api.hyper.co/v6/product/${product}`, {
         method: 'PATCH',
         headers: {

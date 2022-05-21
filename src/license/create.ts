@@ -36,7 +36,7 @@ const res = await License.create(client, body)
 const create = async (client: HyperApiClient, body: LicenseBodyCreate): Promise<HyperApiResponse> => {
     // TODO: Type guard for body
     let res = await fetch(`https://api.hyper.co/v6/licenses`, {
-        method: 'CREATE',
+        method: 'POST',
         headers: {
             'Authorization': `Bearer ${client.apiKey}`
         },
