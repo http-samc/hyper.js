@@ -1,6 +1,6 @@
-import create from "./create";
 import get from "./get";
 import list from "./list";
-import update from "./update";
 
-export { create, get, list, update };
+// TODO: Add API endpoints to add to the waitlist and update (take users off the waitlist)
+
+export { get, list };
