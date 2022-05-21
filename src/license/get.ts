@@ -10,18 +10,16 @@ import { HyperApiClient, HyperApiResponse } from "../types";
  * @param license (string) The key of the license to fetch
  * @returns HyperApiResponse
  * @example
- * ```js
+```js
 import Hyper from 'hyper'
 import * as License from 'hyper/license'
 const client = Hyper('my-api-key')
 
 let license = "FOO-1111-2222-3333-4444"
 
-const res = await License.get(client)
-let foo = document.getElementById("foo")
-foo.innerText = res.ok ? res.email : 'Error'
- * ```
- */
+const res = await License.get(client, license)
+```
+*/
 
 const get = async (client: HyperApiClient, license: string): Promise<HyperApiResponse> => {
     if (!license || typeof license !== 'string') {

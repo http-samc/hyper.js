@@ -16,10 +16,10 @@ type LicenseBodyCreate = {
  * an `ok` boolean for error handling.
  * @docs https://docs.hyper.co/reference/create-license
  * @param client (HyperApiClient) The client to use for the request
- * @param body (LicenseBodyCreate) The key of the license to fetch
+ * @param body (LicenseBodyCreate) The body of the license to create
  * @returns HyperApiResponse
  * @example
- * ```js
+```js
 import Hyper from 'hyper'
 import * as License from 'hyper/license'
 const client = Hyper('my-api-key')
@@ -30,10 +30,8 @@ let body = {
 }
 
 const res = await License.create(client, body)
-let foo = document.getElementById("foo")
-foo.innerText = res.ok ? "Created" : 'Error'
- * ```
- */
+```
+*/
 
 const create = async (client: HyperApiClient, body: LicenseBodyCreate): Promise<HyperApiResponse> => {
     // TODO: Type guard for body

@@ -15,7 +15,7 @@ type LicenseMetadata = {
  * where values are provided only as strings.
  * @returns HyperApiResponse
  * @example
- * ```js
+```js
 import Hyper from 'hyper'
 import * as License from 'hyper/license'
 const client = Hyper('my-api-key')
@@ -27,10 +27,8 @@ let metadata = {
 }
 
 const res = await License.updateMetadata(client, license, metadata)
-let foo = document.getElementById("foo")
-foo.innerText = res.ok ? 'Updated Metadata' : 'Error'
- * ```
- */
+```
+*/
 
 const updateMetadata = async (client: HyperApiClient, license: string, metadata: LicenseMetadata): Promise<HyperApiResponse> => {
     if (!license || typeof license !== 'string') {

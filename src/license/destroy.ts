@@ -9,7 +9,7 @@ import { HyperApiClient, HyperApiResponse } from "../types";
  * @param license (string) The key of the license to delete
  * @returns HyperApiResponse
  * @example
- * ```js
+```js
 import Hyper from 'hyper'
 import * as License from 'hyper/license'
 const client = Hyper('my-api-key')
@@ -17,10 +17,8 @@ const client = Hyper('my-api-key')
 let license = "FOO-1111-2222-3333-4444"
 
 const res = await License.destroy(client)
-let foo = document.getElementById("foo")
-foo.innerText = res.ok ? 'Deleted' : 'Error'
- * ```
- */
+```
+*/
 
 const destroy = async (client: HyperApiClient, license: string): Promise<HyperApiResponse> => {
     if (!license || typeof license !== 'string') {

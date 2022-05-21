@@ -16,7 +16,7 @@ type LicenseBody = {
 }
 
 /**
- * @description Updates a license, given its key.
+ * @description Updates a license, given its key and new value(s).
  * Called asynchronously with `await`. All data is provided as-is from the server,
  * with the addition of an `ok` boolean for error handling.
  * @docs https://docs.hyper.co/reference/update-license
@@ -25,7 +25,7 @@ type LicenseBody = {
  * @param body (LicenseBody) An object with the updated key/value pairs provided
  * @returns HyperApiResponse
  * @example
- * ```js
+```js
 import Hyper from 'hyper'
 import * as License from 'hyper/license'
 const client = Hyper('my-api-key')
@@ -40,10 +40,8 @@ let body = {
 }
 
 const res = await License.update(client, license, body)
-let foo = document.getElementById("foo")
-foo.innerText = res.ok ? 'Updated' : 'Error'
- * ```
- */
+```
+*/
 
 const update = async (client: HyperApiClient, license: string, body: LicenseBody): Promise<HyperApiResponse> => {
     if (!license || typeof license !== 'string') {
@@ -60,7 +58,7 @@ const update = async (client: HyperApiClient, license: string, body: LicenseBody
     let resJson: HyperApiResponse = await res.json()
     resJson.ok = res.status.toString().startsWith('2')
 
-    client.logger && client.logger(`[patch] license @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
+    client.logger && client.logger(`[update] license @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
     return resJson
 }
 
