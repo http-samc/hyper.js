@@ -1,0 +1,10 @@
+{
+    "name": "hyper",
+    "version": "1.0.0",
+    "description": "A Javascript SDK for Hyper's API",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "/dist"
+    ]
+}
