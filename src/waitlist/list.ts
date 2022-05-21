@@ -1,12 +1,12 @@
 import { HyperApiClient, HyperApiResponse, HyperApiPaginatedResponse } from "../types";
 
 /**
- * @description Lists all links.
+ * @description Lists all waitlist entries.
  * Called asynchronously with `await`. All data is
  * provided as-is from the server, with the addition of
  * an `ok` boolean for error handling.
- * @docs https://docs.hyper.co/reference/list-links
- * @param limit (number) The maximum number of links
+ * @docs https://docs.hyper.co/reference/list-waitlist-entries
+ * @param limit (number) The maximum number of entries
  * per page (capped at 100). Defaults to 20.
  * @param page (number) The page number to fetch.
  * Defaults to 1.
@@ -14,11 +14,11 @@ import { HyperApiClient, HyperApiResponse, HyperApiPaginatedResponse } from "../
  * @example
 ```js
 import Hyper from 'hyper'
-import * as Link from 'hyper/link'
+import * as Waitlist from 'hyper/waitlist'
 const client = Hyper('my-api-key')
 
 // Page 1
-const res = await Link.list(client)
+const res = await Waitlist.list(client)
 
 // Note: HyperApiPaginatedResponse .next() and .previous() return null once you reach a nonexisting page.
 
@@ -31,7 +31,7 @@ res.previous()
 */
 
 const list = async (client: HyperApiClient, limit: number = 20, page: number = 1): Promise<HyperApiPaginatedResponse> => {
-    let res = await fetch(`https://api.hyper.co/v6/links?page=${page}&limit=${limit}`, {
+    let res = await fetch(`https://api.hyper.co/v6/waitlist/entries?page=${page}&limit=${limit}`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${client.apiKey}`
@@ -54,7 +54,7 @@ const list = async (client: HyperApiClient, limit: number = 20, page: number = 1
         ...resJson
     }
 
-    client.logger && client.logger(`[list] link @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
+    client.logger && client.logger(`[list] waitlist @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
     return paginatedRes
 }
 
