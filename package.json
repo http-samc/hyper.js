@@ -1,6 +1,6 @@
 {
     "name": "@http-samc/hyper",
-    "version": "6.0.6",
+    "version": "6.0.7",
     "description": "A Javascript SDK for Hyper's API",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",

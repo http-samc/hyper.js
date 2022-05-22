@@ -2,36 +2,36 @@
 <a href="#hyperjs" id="hyperjs" style="color: inherit; text-decoration: none;">
   <h1>hyper.js</h1>
 </a>
-<p> A Javascript SDK for Hyper&#39;s API</p>
+<p>A Javascript SDK for Hyper&#39;s API</p>
 
 <a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
-  <h1>Installation</h1>
+  <h2>Installation</h2>
 </a>
 
 <a href="#nodejs-projects" id="nodejs-projects" style="color: inherit; text-decoration: none;">
-  <h2>Node.js Projects</h2>
+  <h3>Node.js Projects</h3>
 </a>
 <pre><code><span class="hl-2">npm</span><span class="hl-1"> </span><span class="hl-2">install</span><span class="hl-1"> @</span><span class="hl-2">http</span><span class="hl-1">-</span><span class="hl-2">samc</span><span class="hl-1">/</span><span class="hl-2">hyper</span>
 </code></pre>
 
 <a href="#web-projects" id="web-projects" style="color: inherit; text-decoration: none;">
-  <h2>Web Projects</h2>
+  <h3>Web Projects</h3>
 </a>
 <p><em>Coming soon!</em></p>
 
 <a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
-  <h1>Usage</h1>
+  <h2>Usage</h2>
 </a>
 
 <a href="#client-initialization" id="client-initialization" style="color: inherit; text-decoration: none;">
-  <h2>Client Initialization</h2>
+  <h3>Client Initialization</h3>
 </a>
 <p>The <a href="/classes/default.html">Hyper API Client</a> is the default export and needs to be supplied to all calls. It validates and holds your API secret key and an (optional) logger function for development purposes. Import and initialize it as follows:</p>
-<pre><code class="language-js"><span class="hl-0">import</span><span class="hl-1"> </span><span class="hl-2">Hyper</span><span class="hl-1"> </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;hyper&#39;</span><br/><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">client</span><span class="hl-1"> = </span><span class="hl-7">Hyper</span><span class="hl-1">(</span><span class="hl-3">&#39;my-hyper-secret-key&#39;</span><span class="hl-1">)</span>
+<pre><code class="language-js"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">Client</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;hyper&#39;</span><br/><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">client</span><span class="hl-1"> = </span><span class="hl-7">Hyper</span><span class="hl-1">(</span><span class="hl-3">&#39;my-hyper-secret-key&#39;</span><span class="hl-1">)</span>
 </code></pre>
 
 <a href="#api-calls" id="api-calls" style="color: inherit; text-decoration: none;">
-  <h2>API Calls</h2>
+  <h3>API Calls</h3>
 </a>
 <p>Besides the API Client, each &#39;category&#39; of endpoints are able to be imported on an as-needed basis via named imports. These are provided as namespaces and their methods correspond to available API calls. You can import them as follows:</p>
 <pre><code class="language-js"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">License</span><span class="hl-1">, </span><span class="hl-2">Link</span><span class="hl-1">, </span><span class="hl-2">Payment</span><span class="hl-1">, </span><span class="hl-2">Product</span><span class="hl-1">, </span><span class="hl-2">Waitlist</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;hyper&#39;</span><br/><br/><span class="hl-4">// Use the API by calling the methods of the imported namespaces</span><br/><span class="hl-2">License</span><span class="hl-1">.</span><span class="hl-7">get</span><span class="hl-1">(...)</span>
@@ -41,8 +41,13 @@
 </code></pre>
 
 <a href="#api-responses" id="api-responses" style="color: inherit; text-decoration: none;">
-  <h2>API Responses</h2>
+  <h3>API Responses</h3>
 </a>
 <p>This library is asynchronous, meaning that you&#39;ll need to use either <code>await</code> or <code>.then()</code> to wait for a resolved value. All endpoints return a <code>Promise</code> that resolves to a <a href="/interfaces/HyperApiResponse.html">HyperApiResponse</a>. This object contains the response json as-is, straight from the server with the addition of an <code>ok</code> boolean property for easy error checking.</p>
 <p>Some endpoints resolve to a <a href="/interfaces/HyperApiPaginatedResponse.html">HyperApiPaginatedResponse</a>, a child of <a href="/interfaces/HyperApiResponse.html">HyperApiResponse</a>. This type of response adds an intuitive <code>.next()</code> and <code>.previous</code> property, which can be used to quickly navigate paginated endpoints. They return <code>null</code> once you reach a page that doesn&#39;t exist, so use the <code>has_more</code> property (supplied on all paginated endpoints) and make sure you aren&#39;t calling a page less than 1 before calling either method.</p>
-</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li><li class=" tsd-kind-namespace"><a href="modules/License.html">License</a></li><li class=" tsd-kind-namespace"><a href="modules/Link.html">Link</a></li><li class=" tsd-kind-namespace"><a href="modules/Payment.html">Payment</a></li><li class=" tsd-kind-namespace"><a href="modules/Product.html">Product</a></li><li class=" tsd-kind-namespace"><a href="modules/Waitlist.html">Waitlist</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-interface"><a href="interfaces/HyperApiClient.html" class="tsd-kind-icon">Hyper<wbr/>Api<wbr/>Client</a></li><li class="tsd-kind-interface"><a href="interfaces/HyperApiPaginatedResponse.html" class="tsd-kind-icon">Hyper<wbr/>Api<wbr/>Paginated<wbr/>Response</a></li><li class="tsd-kind-interface"><a href="interfaces/HyperApiResponse.html" class="tsd-kind-icon">Hyper<wbr/>Api<wbr/>Response</a></li><li class="tsd-kind-type-alias"><a href="modules.html#LicenseBodyCreate" class="tsd-kind-icon">License<wbr/>Body<wbr/>Create</a></li><li class="tsd-kind-type-alias"><a href="modules.html#LicenseBodyUpdate" class="tsd-kind-icon">License<wbr/>Body<wbr/>Update</a></li><li class="tsd-kind-type-alias"><a href="modules.html#LicenseMetadataUpdate" class="tsd-kind-icon">License<wbr/>Metadata<wbr/>Update</a></li><li class="tsd-kind-type-alias"><a href="modules.html#LinkBodyCreate" class="tsd-kind-icon">Link<wbr/>Body<wbr/>Create</a></li><li class="tsd-kind-type-alias"><a href="modules.html#LinkBodyUpdate" class="tsd-kind-icon">Link<wbr/>Body<wbr/>Update</a></li><li class="tsd-kind-type-alias"><a href="modules.html#ProductBodyCreate" class="tsd-kind-icon">Product<wbr/>Body<wbr/>Create</a></li><li class="tsd-kind-type-alias"><a href="modules.html#ProductBodyUpdate" class="tsd-kind-icon">Product<wbr/>Body<wbr/>Update</a></li><li class="tsd-kind-function"><a href="modules.html#default" class="tsd-kind-icon">default</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
+
+<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+  <h2>License</h2>
+</a>
+<p>This library is open-sourced under an MIT license and was written by <a href="https://smrth.dev">Samarth Chitgopekar</a>. <em>It is not officially recognized, endorsed, or maintained by Hyper</em>.</p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li><li class=" tsd-kind-namespace"><a href="modules/License.html">License</a></li><li class=" tsd-kind-namespace"><a href="modules/Link.html">Link</a></li><li class=" tsd-kind-namespace"><a href="modules/Payment.html">Payment</a></li><li class=" tsd-kind-namespace"><a href="modules/Product.html">Product</a></li><li class=" tsd-kind-namespace"><a href="modules/Waitlist.html">Waitlist</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-interface"><a href="interfaces/HyperApiClient.html" class="tsd-kind-icon">Hyper<wbr/>Api<wbr/>Client</a></li><li class="tsd-kind-interface"><a href="interfaces/HyperApiPaginatedResponse.html" class="tsd-kind-icon">Hyper<wbr/>Api<wbr/>Paginated<wbr/>Response</a></li><li class="tsd-kind-interface"><a href="interfaces/HyperApiResponse.html" class="tsd-kind-icon">Hyper<wbr/>Api<wbr/>Response</a></li><li class="tsd-kind-type-alias"><a href="modules.html#LicenseBodyCreate" class="tsd-kind-icon">License<wbr/>Body<wbr/>Create</a></li><li class="tsd-kind-type-alias"><a href="modules.html#LicenseBodyUpdate" class="tsd-kind-icon">License<wbr/>Body<wbr/>Update</a></li><li class="tsd-kind-type-alias"><a href="modules.html#LicenseMetadataUpdate" class="tsd-kind-icon">License<wbr/>Metadata<wbr/>Update</a></li><li class="tsd-kind-type-alias"><a href="modules.html#LinkBodyCreate" class="tsd-kind-icon">Link<wbr/>Body<wbr/>Create</a></li><li class="tsd-kind-type-alias"><a href="modules.html#LinkBodyUpdate" class="tsd-kind-icon">Link<wbr/>Body<wbr/>Update</a></li><li class="tsd-kind-type-alias"><a href="modules.html#ProductBodyCreate" class="tsd-kind-icon">Product<wbr/>Body<wbr/>Create</a></li><li class="tsd-kind-type-alias"><a href="modules.html#ProductBodyUpdate" class="tsd-kind-icon">Product<wbr/>Body<wbr/>Update</a></li><li class="tsd-kind-function"><a href="modules.html#Client" class="tsd-kind-icon">Client</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>

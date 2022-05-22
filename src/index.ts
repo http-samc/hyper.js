@@ -1,4 +1,4 @@
-import Hyper from './client'
+import Client from './client'
 
 // Types
 export * from './types'
@@ -11,4 +11,4 @@ export * as Product from './product'
 export * as Waitlist from './waitlist'
 
 // Client
-export * as Client from './client'
+export { Client }
