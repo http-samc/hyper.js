@@ -43,7 +43,7 @@ const updateLink = async (client: HyperApiClient, link: string, body: LinkBodyUp
     let ok = res.status.toString().startsWith('2')
 
     client.logger && client.logger(`[update] link @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
-    return { ok, resJson }
+    return { ok, ...resJson }
 }
 
 export default updateLink

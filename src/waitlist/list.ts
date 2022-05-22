@@ -30,7 +30,7 @@ const listWaitlistEntries = async (client: HyperApiClient): Promise<HyperApiResp
     let ok = res.status.toString().startsWith('2')
 
     client.logger && client.logger(`[list] waitlist @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
-    return { ok, resJson }
+    return { ok, ...resJson }
 }
 
 export default listWaitlistEntries

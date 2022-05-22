@@ -46,7 +46,7 @@ const updateLicense = async (client: HyperApiClient, license: string, body: Lice
     let ok = res.status.toString().startsWith('2')
 
     client.logger && client.logger(`[update] license @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
-    return { ok, resJson }
+    return { ok, ...resJson }
 }
 
 export default updateLicense

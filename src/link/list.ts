@@ -30,7 +30,7 @@ const listLinks = async (client: HyperApiClient): Promise<HyperApiResponse> => {
     let ok = res.status.toString().startsWith('2')
 
     client.logger && client.logger(`[list] link @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
-    return { ok, resJson }
+    return { ok, ...resJson }
 }
 
 export default listLinks

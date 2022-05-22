@@ -37,7 +37,7 @@ const getWaitlistEntry = async (client: HyperApiClient, entry: string): Promise<
     let ok = res.status.toString().startsWith('2')
 
     client.logger && client.logger(`[get] waitlist @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
-    return { ok, resJson }
+    return { ok, ...resJson }
 }
 
 export default getWaitlistEntry

@@ -37,7 +37,7 @@ const getLicense = async (client: HyperApiClient, license: string): Promise<Hype
     let ok = res.status.toString().startsWith('2')
 
     client.logger && client.logger(`[get] license @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
-    return { ok, resJson }
+    return { ok, ...resJson }
 }
 
 export default getLicense

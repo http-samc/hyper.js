@@ -44,7 +44,7 @@ const updateLicenseMetadata = async (client: HyperApiClient, license: string, me
     let ok = res.status.toString().startsWith('2')
 
     client.logger && client.logger(`[patch metadata] license @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
-    return { ok, resJson }
+    return { ok, ...resJson }
 }
 
 export default updateLicenseMetadata

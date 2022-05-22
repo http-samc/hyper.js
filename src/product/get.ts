@@ -2,13 +2,13 @@ import fetch from 'node-fetch'
 import { HyperApiClient, HyperApiResponse } from "../types";
 
 /**
- * @description Retrieves a product, given its name.
+ * @description Retrieves a product, given its id.
  * Called asynchronously with `await`. All data is
  * provided as-is from the server, with the addition
  * of an `ok` boolean for error handling.
  * @docs https://docs.hyper.co/reference/retrieve-product
  * @param client (HyperApiClient) The client to use for the request
- * @param product (string) The name of the product to fetch
+ * @param product (string) The id of the product to fetch
  * @returns HyperApiResponse
  * @example
 ```js
@@ -16,7 +16,7 @@ import Hyper from 'hyper'
 import * as Product from 'hyper/product'
 const client = Hyper('my-api-key')
 
-let product = "my-product"
+let product = "my-product-id"
 
 const res = await Product.get(client, product)
 ```
@@ -37,7 +37,7 @@ const getProduct = async (client: HyperApiClient, product: string): Promise<Hype
     let ok = res.status.toString().startsWith('2')
 
     client.logger && client.logger(`[get] product @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
-    return { ok, resJson }
+    return { ok, ...resJson }
 }
 
 export default getProduct

@@ -37,7 +37,7 @@ const getLink = async (client: HyperApiClient, link: string): Promise<HyperApiRe
     let ok = res.status.toString().startsWith('2')
 
     client.logger && client.logger(`[get] link @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
-    return { ok, resJson }
+    return { ok, ...resJson }
 }
 
 export default getLink

@@ -17,7 +17,7 @@ import * as Link from 'hyper/link'
 const client = Hyper('my-api-key')
 
 let body = {
-    plan: "my-product-name"
+    plan: "my-product-id"
 }
 
 const res = await Link.create(client, body)
@@ -38,7 +38,7 @@ const createLink = async (client: HyperApiClient, body: LinkBodyCreate): Promise
     let ok = res.status.toString().startsWith('2')
 
     client.logger && client.logger(`[create] link @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
-    return { ok, resJson }
+    return { ok, ...resJson }
 }
 
 export default createLink

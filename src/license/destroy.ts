@@ -36,7 +36,7 @@ const destroyLicense = async (client: HyperApiClient, license: string): Promise<
     let ok = res.status.toString().startsWith('2')
 
     client.logger && client.logger(`[delete] license @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
-    return { ok, resJson }
+    return { ok, ...resJson }
 }
 
 export default destroyLicense

@@ -37,7 +37,7 @@ const getPayment = async (client: HyperApiClient, payment: string): Promise<Hype
     let ok = res.status.toString().startsWith('2')
 
     client.logger && client.logger(`[get] payment @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
-    return { ok, resJson }
+    return { ok, ...resJson }
 }
 
 export default getPayment

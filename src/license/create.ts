@@ -39,7 +39,7 @@ const createLicense = async (client: HyperApiClient, body: LicenseBodyCreate): P
     let ok = res.status.toString().startsWith('2')
 
     client.logger && client.logger(`[create] license @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
-    return { ok, resJson }
+    return { ok, ...resJson }
 }
 
 export default createLicense

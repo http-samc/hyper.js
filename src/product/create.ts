@@ -20,7 +20,7 @@ let body = {
     name: "My Product",
     type: "recurring",
     amount: 100,
-    currency: "USD"
+    currency: "usd"
 }
 
 const res = await Product.create(client, body)
@@ -29,6 +29,7 @@ const res = await Product.create(client, body)
 
 const createProduct = async (client: HyperApiClient, body: ProductBodyCreate): Promise<HyperApiResponse> => {
     // TODO: Type guard for body
+    body.currency = body.currency.toLowerCase() // TODO: Document currency types & must be lowercase
     let res = await fetch(`https://api.hyper.co/v6/products`, {
         method: 'POST',
         headers: {
@@ -41,7 +42,7 @@ const createProduct = async (client: HyperApiClient, body: ProductBodyCreate): P
     let ok = res.status.toString().startsWith('2')
 
     client.logger && client.logger(`[create] product @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
-    return { ok, resJson }
+    return { ok, ...resJson }
 }
 
 export default createProduct
