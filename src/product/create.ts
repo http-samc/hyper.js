@@ -35,10 +35,10 @@ const createProduct = async (client: HyperApiClient, body: ProductBodyCreate): P
         },
         body: JSON.stringify(body)
     })
-    let resJson: HyperApiResponse = await res.json()
-    resJson.ok = res.status.toString().startsWith('2')
+    let resJson: { [key: string]: any } = await res.json()
+    let ok = res.status.toString().startsWith('2')
 
-    client.logger && client.logger(`[create] product @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
+    client.logger && client.logger(`[create] product @ ${Date.now().toLocaleString('en-us')}: ${let ok ? 'OK' : 'Error'}`)
     return resJson
 }
 
