@@ -6,20 +6,20 @@ import { HyperApiClient } from "./types"
  * @param {(msg: string) => void} [logger] A function to log API calls
  * @example
 ```js
-import Hyper from 'hyper'
+import { Client } from 'hyper'
 
 // Basic usage
-const client = Hyper('my-api-key')
+const client = Client('my-api-key')
 
 // Log calls (to console)
-const client = Hyper('my-api-key', console.log)
+const client = Client('my-api-key', console.log)
 ```
 */
-const Hyper = (apiKey: string, logger?: (msg: string) => void): HyperApiClient => {
+const Client = (apiKey: string, logger?: (msg: string) => void): HyperApiClient => {
     return {
         apiKey,
         logger,
     }
 }
 
-export default Hyper
+export default Client
