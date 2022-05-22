@@ -1,3 +1,4 @@
+import fetch from 'node-fetch'
 import { HyperApiClient, HyperApiResponse } from "../types";
 
 /**
@@ -28,14 +29,15 @@ const getProduct = async (client: HyperApiClient, product: string): Promise<Hype
     let res = await fetch(`https://api.hyper.co/v6/products/${product}`, {
         method: 'GET',
         headers: {
-            'Authorization': `Bearer ${client.apiKey}`
+            'Authorization': `Bearer ${client.apiKey}`,
+            'Content-Type': 'application/json'
         }
     })
-    let resJson: HyperApiResponse = await res.json()
-    resJson.ok = res.status.toString().startsWith('2')
+    let resJson: { [key: string]: any } = await res.json()
+    let ok = res.status.toString().startsWith('2')
 
     client.logger && client.logger(`[get] product @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
-    return resJson
+    return { ok, resJson }
 }
 
 export default getProduct

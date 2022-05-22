@@ -1,3 +1,4 @@
+import fetch from 'node-fetch'
 import { HyperApiClient, HyperApiResponse, LinkBodyUpdate } from "../types";
 
 /**
@@ -33,15 +34,16 @@ const updateLink = async (client: HyperApiClient, link: string, body: LinkBodyUp
     let res = await fetch(`https://api.hyper.co/v6/links/${link}`, {
         method: 'PATCH',
         headers: {
-            'Authorization': `Bearer ${client.apiKey}`
+            'Authorization': `Bearer ${client.apiKey}`,
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(body)
     })
-    let resJson: HyperApiResponse = await res.json()
-    resJson.ok = res.status.toString().startsWith('2')
+    let resJson: { [key: string]: any } = await res.json()
+    let ok = res.status.toString().startsWith('2')
 
     client.logger && client.logger(`[update] link @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
-    return resJson
+    return { ok, resJson }
 }
 
 export default updateLink

@@ -72,6 +72,10 @@ type ProductBodyCreate = {
     image?: string
     description?: string
     rental_period_days?: number
+    recurring?: { // TODO: Get official documentation for this
+        interval: "day" | "week" | "month" | "year"
+        interval_count: number
+    }
 }
 
 type ProductBodyUpdate = {

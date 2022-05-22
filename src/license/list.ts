@@ -1,4 +1,5 @@
-import { HyperApiClient, HyperApiResponse, HyperApiPaginatedResponse } from "../types";
+import fetch from 'node-fetch'
+import { HyperApiClient, HyperApiPaginatedResponse } from "../types";
 
 /**
  * @description Lists all licenses.
@@ -34,11 +35,12 @@ const listLicenses = async (client: HyperApiClient, limit: number = 20, page: nu
     let res = await fetch(`https://api.hyper.co/v6/licenses?page=${page}&limit=${limit}`, {
         method: 'GET',
         headers: {
-            'Authorization': `Bearer ${client.apiKey}`
+            'Authorization': `Bearer ${client.apiKey}`,
+            'Content-Type': 'application/json'
         },
     })
-    let resJson: HyperApiResponse = await res.json()
-    resJson.ok = res.status.toString().startsWith('2')
+    let resJson: { [key: string]: any } = await res.json()
+    let ok = res.status.toString().startsWith('2')
 
     let paginatedRes: HyperApiPaginatedResponse = {
         next: () => {
@@ -51,6 +53,7 @@ const listLicenses = async (client: HyperApiClient, limit: number = 20, page: nu
                 ? listLicenses(client, limit, page - 1)
                 : null
         },
+        ok,
         ...resJson
     }
 
