@@ -29,26 +29,15 @@ Besides the API Client, each 'category' of endpoints are able to be imported on 
 import { License, Link, Payment, Product, Waitlist } from 'hyper'
 
 // Use the API by calling the methods of the imported namespaces
-License.get(...)
-```
 
-If you want to call the namespaces something different, import them directly from their respective directory as follows (you can change the names as you wish):
-
-```js
-import * as License from './license'
-import * as Link from './link'
-import * as Payment from './payment'
-import * as Product from './product'
-import * as Waitlist from './waitlist'
-
-// Use the API by calling the methods of the imported namespaces
+// Calls /v6/licenses/{license}
 License.get(...)
 ```
 
 ### API Responses
 This library is asynchronous, meaning that you'll need to use either `await` or `.then()` to wait for a resolved value. All endpoints return a `Promise` that resolves to a [HyperApiResponse](/interfaces/HyperApiResponse.html). This object contains the response json as-is, straight from the server with the addition of an `ok` boolean property for easy error checking.
 
-Some endpoints resolve to a [HyperApiPaginatedResponse](/interfaces/HyperApiPaginatedResponse.html), a child of [HyperApiResponse](/interfaces/HyperApiResponse.html). This type of response adds an intuitive `.next()` and `.previous` property, which can be used to quickly navigate paginated endpoints. They return `null` once you reach a page that doesn't exist, so use the `has_more` property (supplied on all paginated endpoints) and make sure you aren't calling a page less than 1 before calling either method.
+Some endpoints resolve to a [HyperApiPaginatedResponse](/interfaces/HyperApiPaginatedResponse.html), a child of [HyperApiResponse](/interfaces/HyperApiResponse.html). This type of response adds intuitive `next()` and `previous()` methods, which can be used to quickly navigate paginated endpoints. They return `null` once you reach a page that doesn't exist, so use the `has_more` property (supplied on all paginated endpoints) and make sure you aren't calling a page less than 1 before calling either method.
 
 ## License
 This library is open-sourced under an MIT license and was written by [Samarth Chitgopekar](https://smrth.dev). *It is not officially recognized, endorsed, or maintained by Hyper*.

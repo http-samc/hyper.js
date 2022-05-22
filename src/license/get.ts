@@ -12,8 +12,7 @@ import { HyperApiClient, HyperApiResponse } from "../types";
  * @returns HyperApiResponse
  * @example
 ```js
-import { Client } from 'hyper'
-import * as License from 'hyper/license'
+import { Client, License } from 'hyper'
 const client = Hyper('my-api-key')
 
 let license = "FOO-1111-2222-3333-4444"

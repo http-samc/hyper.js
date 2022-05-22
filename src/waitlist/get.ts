@@ -12,8 +12,7 @@ import { HyperApiClient, HyperApiResponse } from "../types";
  * @returns HyperApiResponse
  * @example
 ```js
-import { Client } from 'hyper'
-import * as Waitlist from 'hyper/waitlist'
+import { Client, Waitlist } from 'hyper'
 const client = Hyper('my-api-key')
 
 let entry = "my-entry-id"

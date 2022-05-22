@@ -14,8 +14,7 @@ import { HyperApiClient, HyperApiPaginatedResponse } from "../types";
  * @returns HyperApiPaginatedResponse
  * @example
 ```js
-import { Client } from 'hyper'
-import * as License from 'hyper/license'
+import { Client, License } from 'hyper'
 const client = Hyper('my-api-key')
 
 // Page 1

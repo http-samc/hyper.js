@@ -12,8 +12,7 @@ import { HyperApiClient, HyperApiResponse } from "../types";
  * @returns HyperApiResponse
  * @example
 ```js
-import { Client } from 'hyper'
-import * as Payment from 'hyper/payment'
+import { Client, Payment } from 'hyper'
 const client = Hyper('my-api-key')
 
 let payment = "my-payment-id"

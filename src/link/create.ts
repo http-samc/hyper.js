@@ -12,8 +12,7 @@ import { HyperApiClient, HyperApiResponse, LinkBodyCreate } from "../types";
  * @returns {HyperApiResponse}
  * @example
 ```js
-import { Client } from 'hyper'
-import * as Link from 'hyper/link'
+import { Client, Link } from 'hyper'
 const client = Hyper('my-api-key')
 
 let body = {
