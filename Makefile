@@ -5,5 +5,5 @@ release:
 	cd docs && \
 	vercel --prod && \
 	git add --all && \
-	git commit -m "Update docs" && \
-	git push origin master
+	git commit -m "Latest NPM Release" && \
+	git push --all
