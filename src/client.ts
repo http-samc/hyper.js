@@ -22,4 +22,4 @@ const Client = (apiKey: string, logger?: (msg: string) => void): HyperApiClient 
     }
 }
 
-export default Client
+export { Client }
