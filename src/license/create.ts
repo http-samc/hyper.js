@@ -1,4 +1,3 @@
-import fetch from 'node-fetch'
 import { HyperApiClient, HyperApiResponse, LicenseBodyCreate } from "../types";
 
 /**
@@ -34,11 +33,11 @@ const createLicense = async (client: HyperApiClient, body: LicenseBodyCreate): P
         },
         body: JSON.stringify(body)
     })
-    let resJson: { [key: string]: any } = await res.json()
-    let ok = res.status.toString().startsWith('2')
+    let resJson: HyperApiResponse = await res.json()
+    resJson.ok = res.status.toString().startsWith('2')
 
-    client.logger && client.logger(`[create] license @ ${Date.now().toLocaleString('en-us')}: ${let ok ? 'OK' : 'Error'}`)
-    return { ok, resJson }
+    client.logger && client.logger(`[create] license @ ${Date.now().toLocaleString('en-us')}: ${resJson.ok ? 'OK' : 'Error'}`)
+    return resJson
 }
 
 export default createLicense
