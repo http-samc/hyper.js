@@ -30,7 +30,7 @@ res.previous()
 ```
 */
 
-const list = async (client: HyperApiClient, limit: number = 20, page: number = 1): Promise<HyperApiPaginatedResponse> => {
+const listLicenses = async (client: HyperApiClient, limit: number = 20, page: number = 1): Promise<HyperApiPaginatedResponse> => {
     let res = await fetch(`https://api.hyper.co/v6/licenses?page=${page}&limit=${limit}`, {
         method: 'GET',
         headers: {
@@ -43,12 +43,12 @@ const list = async (client: HyperApiClient, limit: number = 20, page: number = 1
     let paginatedRes: HyperApiPaginatedResponse = {
         next: () => {
             return resJson.has_more
-                ? list(client, limit, page + 1)
+                ? listLicenses(client, limit, page + 1)
                 : null
         },
         previous: () => {
             return page - 1 >= 1
-                ? list(client, limit, page - 1)
+                ? listLicenses(client, limit, page - 1)
                 : null
         },
         ...resJson
@@ -58,4 +58,4 @@ const list = async (client: HyperApiClient, limit: number = 20, page: number = 1
     return paginatedRes
 }
 
-export default list
+export default listLicenses

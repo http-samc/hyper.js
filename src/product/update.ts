@@ -1,29 +1,4 @@
-import { HyperApiClient, HyperApiResponse } from "../types";
-
-// TODO: Convert snake_case keys to camelCase within SDK only
-type ProductBodyUpdate = {
-    name?: string
-    image?: string
-    description?: string
-    rental_period_days?: number
-    links?: { title: string, href: string }[]
-    transfers?: {
-        enabled: boolean
-        cooldown_days: number
-    }
-    integrations?: {
-        discord?: {
-            roles: string[]
-            cancel_action: "kick"
-            | "remove_plan_roles"
-            | "remove_all_roles"
-            | "none"
-        }
-        telegram?: {
-            cancel_action: "kick" | "none"
-        }
-    }
-}
+import { HyperApiClient, HyperApiResponse, ProductBodyUpdate } from "../types";
 
 /**
  * @description Updates a product, given its name and new value(s).
@@ -50,7 +25,7 @@ const res = await Product.update(client, product, body)
 ```
 */
 
-const update = async (client: HyperApiClient, product: string, body: ProductBodyUpdate): Promise<HyperApiResponse> => {
+const updateProduct = async (client: HyperApiClient, product: string, body: ProductBodyUpdate): Promise<HyperApiResponse> => {
     if (!product || typeof product !== 'string') {
         throw Error(`link = "${product}" (type ${typeof product}) is not a truthy string.`);
     }
@@ -69,4 +44,4 @@ const update = async (client: HyperApiClient, product: string, body: ProductBody
     return resJson
 }
 
-export default update
+export default updateProduct

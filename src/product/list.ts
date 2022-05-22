@@ -17,7 +17,7 @@ const res = await Product.list(client)
 ```
 */
 
-const list = async (client: HyperApiClient): Promise<HyperApiResponse> => {
+const listProducts = async (client: HyperApiClient): Promise<HyperApiResponse> => {
     let res = await fetch(`https://api.hyper.co/v6/products`, {
         method: 'GET',
         headers: {
@@ -31,4 +31,4 @@ const list = async (client: HyperApiClient): Promise<HyperApiResponse> => {
     return resJson
 }
 
-export default list
+export default listProducts

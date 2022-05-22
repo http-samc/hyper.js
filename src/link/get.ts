@@ -21,7 +21,7 @@ const res = await Product.get(client, link)
 ```
 */
 
-const get = async (client: HyperApiClient, link: string): Promise<HyperApiResponse> => {
+const getLink = async (client: HyperApiClient, link: string): Promise<HyperApiResponse> => {
     if (!link || typeof link !== 'string') {
         throw Error(`link = "${link}" (type ${typeof link}) is not a truthy string.`);
     }
@@ -38,4 +38,4 @@ const get = async (client: HyperApiClient, link: string): Promise<HyperApiRespon
     return resJson
 }
 
-export default get
+export default getLink

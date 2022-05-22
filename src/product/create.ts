@@ -1,15 +1,4 @@
-import { HyperApiClient, HyperApiResponse } from "../types";
-
-// TODO: Convert snake_case keys to camelCase within SDK only
-type ProductBodyCreate = {
-    name: string
-    type: "lifetime" | "recurring" | "free" | "rental"
-    amount: number
-    currency: string // TODO: Type guard for currency
-    image?: string
-    description?: string
-    rental_period_days?: number
-}
+import { HyperApiClient, HyperApiResponse, ProductBodyCreate } from "../types";
 
 /**
  * @description Creates a product, given a name, subscription type
@@ -37,7 +26,7 @@ const res = await Product.create(client, body)
 ```
 */
 
-const create = async (client: HyperApiClient, body: ProductBodyCreate): Promise<HyperApiResponse> => {
+const createProduct = async (client: HyperApiClient, body: ProductBodyCreate): Promise<HyperApiResponse> => {
     // TODO: Type guard for body
     let res = await fetch(`https://api.hyper.co/v6/products`, {
         method: 'POST',
@@ -53,4 +42,4 @@ const create = async (client: HyperApiClient, body: ProductBodyCreate): Promise<
     return resJson
 }
 
-export default create
+export default createProduct

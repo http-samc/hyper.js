@@ -21,7 +21,7 @@ const res = await License.get(client, license)
 ```
 */
 
-const get = async (client: HyperApiClient, license: string): Promise<HyperApiResponse> => {
+const getLicense = async (client: HyperApiClient, license: string): Promise<HyperApiResponse> => {
     if (!license || typeof license !== 'string') {
         throw Error(`license = "${license}" (type ${typeof license}) is not a truthy string.`);
     }
@@ -38,4 +38,4 @@ const get = async (client: HyperApiClient, license: string): Promise<HyperApiRes
     return resJson
 }
 
-export default get
+export default getLicense

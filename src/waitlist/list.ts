@@ -17,7 +17,7 @@ const res = await Waitlist.list(client)
 ```
 */
 
-const list = async (client: HyperApiClient): Promise<HyperApiResponse> => {
+const listWaitlistEntries = async (client: HyperApiClient): Promise<HyperApiResponse> => {
     let res = await fetch(`https://api.hyper.co/v6/waitlist/entries`, {
         method: 'GET',
         headers: {
@@ -31,4 +31,4 @@ const list = async (client: HyperApiClient): Promise<HyperApiResponse> => {
     return resJson
 }
 
-export default list
+export default listWaitlistEntries

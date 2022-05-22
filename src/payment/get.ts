@@ -21,7 +21,7 @@ const res = await Payment.get(client, payment)
 ```
 */
 
-const get = async (client: HyperApiClient, payment: string): Promise<HyperApiResponse> => {
+const getPayment = async (client: HyperApiClient, payment: string): Promise<HyperApiResponse> => {
     if (!payment || typeof payment !== 'string') {
         throw Error(`payment = "${payment}" (type ${typeof payment}) is not a truthy string.`);
     }
@@ -38,4 +38,4 @@ const get = async (client: HyperApiClient, payment: string): Promise<HyperApiRes
     return resJson
 }
 
-export default get
+export default getPayment

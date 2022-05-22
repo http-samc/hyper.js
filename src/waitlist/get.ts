@@ -21,7 +21,7 @@ const res = await Waitlist.get(client, entry)
 ```
 */
 
-const get = async (client: HyperApiClient, entry: string): Promise<HyperApiResponse> => {
+const getWaitlistEntry = async (client: HyperApiClient, entry: string): Promise<HyperApiResponse> => {
     if (!entry || typeof entry !== 'string') {
         throw Error(`entry = "${entry}" (type ${typeof entry}) is not a truthy string.`);
     }
@@ -38,4 +38,4 @@ const get = async (client: HyperApiClient, entry: string): Promise<HyperApiRespo
     return resJson
 }
 
-export default get
+export default getWaitlistEntry

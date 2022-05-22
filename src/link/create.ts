@@ -1,18 +1,4 @@
-import { HyperApiClient, HyperApiResponse } from "../types";
-
-// TODO: Convert snake_case keys to camelCase within SDK only
-type LinkBodyCreate = {
-    plan: string // FIXME: This should be called 'product_name' for clarity
-    password?: string
-    trial_period_days?: number
-    group_buy_guild?: string
-    enable_bot_protection?: boolean
-    max_usages?: number
-    start_date?: string
-    initial_fee_amount?: number
-    // FIXME: Should require for a currency for initial_fee_amount
-    // eg. initial_fee: { amount: 10, currency: 'USD' }
-}
+import { HyperApiClient, HyperApiResponse, LinkBodyCreate } from "../types";
 
 /**
  * @description Creates a purchase link, given a product name.
@@ -20,9 +6,9 @@ type LinkBodyCreate = {
  * provided as-is from the server, with the addition of
  * an `ok` boolean for error handling.
  * @docs https://docs.hyper.co/reference/create-link
- * @param client (HyperApiClient) The client to use for the request
- * @param body (ProductBodyCreate) The body of the product to create
- * @returns HyperApiResponse
+ * @param {HyperApiClient} client The client to use for the request
+ * @param {ProductBodyCreate} body The body of the product to create
+ * @returns {HyperApiResponse}
  * @example
 ```js
 import Hyper from 'hyper'
@@ -37,7 +23,7 @@ const res = await Link.create(client, body)
 ```
 */
 
-const create = async (client: HyperApiClient, body: LinkBodyCreate): Promise<HyperApiResponse> => {
+const createLink = async (client: HyperApiClient, body: LinkBodyCreate): Promise<HyperApiResponse> => {
     // TODO: Type guard for body
     let res = await fetch(`https://api.hyper.co/v6/links`, {
         method: 'POST',
@@ -53,4 +39,4 @@ const create = async (client: HyperApiClient, body: LinkBodyCreate): Promise<Hyp
     return resJson
 }
 
-export default create
+export default createLink

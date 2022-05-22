@@ -20,7 +20,7 @@ const res = await License.destroy(client)
 ```
 */
 
-const destroy = async (client: HyperApiClient, license: string): Promise<HyperApiResponse> => {
+const destroyLicense = async (client: HyperApiClient, license: string): Promise<HyperApiResponse> => {
     if (!license || typeof license !== 'string') {
         throw Error(`license = "${license}" (type ${typeof license}) is not a truthy string.`);
     }
@@ -37,4 +37,4 @@ const destroy = async (client: HyperApiClient, license: string): Promise<HyperAp
     return resJson
 }
 
-export default destroy
+export default destroyLicense

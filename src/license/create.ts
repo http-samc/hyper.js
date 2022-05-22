@@ -1,13 +1,4 @@
-import { HyperApiClient, HyperApiResponse } from "../types";
-
-type LicenseBodyCreate = {
-    plan: string
-    email: string
-    key?: string
-    metadata?: {
-        [key: string]: string
-    }
-}
+import { HyperApiClient, HyperApiResponse, LicenseBodyCreate } from "../types";
 
 /**
  * @description Creates a license, given a plan and email.
@@ -33,7 +24,7 @@ const res = await License.create(client, body)
 ```
 */
 
-const create = async (client: HyperApiClient, body: LicenseBodyCreate): Promise<HyperApiResponse> => {
+const createLicense = async (client: HyperApiClient, body: LicenseBodyCreate): Promise<HyperApiResponse> => {
     // TODO: Type guard for body
     let res = await fetch(`https://api.hyper.co/v6/licenses`, {
         method: 'POST',
@@ -49,4 +40,4 @@ const create = async (client: HyperApiClient, body: LicenseBodyCreate): Promise<
     return resJson
 }
 
-export default create
+export default createLicense

@@ -1,9 +1,5 @@
-import { HyperApiClient } from "./types"
-
 /**
- * @description Creates a {@link HyperApiClient}, given an API key
- * @param apiKey (string) The API key to use for the client
- * @param logger (function) A function to call for logging messages
+ * @description Creates a {@link HyperApiClient}, given a secret API key
  * @example
 ```js
 import Hyper from 'hyper'

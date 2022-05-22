@@ -1,8 +1,4 @@
-import { HyperApiClient, HyperApiResponse } from "../types";
-
-type LicenseMetadataUpdate = {
-    [key: string]: string
-}
+import { HyperApiClient, HyperApiResponse, LicenseMetadataUpdate } from "../types";
 
 /**
  * @description Updates a license's metadata, given its key.
@@ -30,7 +26,7 @@ const res = await License.updateMetadata(client, license, metadata)
 ```
 */
 
-const updateMetadata = async (client: HyperApiClient, license: string, metadata: LicenseMetadataUpdate): Promise<HyperApiResponse> => {
+const updateLicenseMetadata = async (client: HyperApiClient, license: string, metadata: LicenseMetadataUpdate): Promise<HyperApiResponse> => {
     if (!license || typeof license !== 'string') {
         throw Error(`license = "${license}" (type ${typeof license}) is not a truthy string.`);
     }
@@ -49,4 +45,4 @@ const updateMetadata = async (client: HyperApiClient, license: string, metadata:
     return resJson
 }
 
-export default updateMetadata
+export default updateLicenseMetadata

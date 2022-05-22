@@ -1,10 +1,4 @@
-import { HyperApiClient, HyperApiResponse } from "../types";
-
-// TODO: Convert snake_case keys to camelCase within SDK only
-type LinkBodyUpdate = {
-    active?: boolean
-    remaining_stock?: number
-}
+import { HyperApiClient, HyperApiResponse, LinkBodyUpdate } from "../types";
 
 /**
  * @description Updates a link, given its id and new value(s).
@@ -31,7 +25,7 @@ const res = await Link.update(client, link, body)
 ```
 */
 
-const update = async (client: HyperApiClient, link: string, body: LinkBodyUpdate): Promise<HyperApiResponse> => {
+const updateLink = async (client: HyperApiClient, link: string, body: LinkBodyUpdate): Promise<HyperApiResponse> => {
     if (!link || typeof link !== 'string') {
         throw Error(`link = "${link}" (type ${typeof link}) is not a truthy string.`);
     }
@@ -50,4 +44,4 @@ const update = async (client: HyperApiClient, link: string, body: LinkBodyUpdate
     return resJson
 }
 
-export default update
+export default updateLink

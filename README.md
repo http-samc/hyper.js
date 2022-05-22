@@ -1,21 +1,50 @@
 # hyper.js
  A Javascript SDK for Hyper's API
 
-# Demo
-```js
-import HyperClient, {getLicense} from 'hyper'
+# Installation
 
-const client = HyperClient('1234', console.log)
-
-// Callback
-// Ack: (_: HyperApiResponse) => void
-getLicense(client, (data: HyperApiResponse) => {
-    let foo = document.getElementById("foo")
-    foo.innerText = data.ok ? data.username : 'Error'
-})
-
-// Async
-const res: HyperApiResponse = await getLicense(client)
-let foo = document.getElementById("foo")
-foo.innerText = res.ok ? res.username : 'Error'
+## Node.js Projects
 ```
+npm install @http-samc/hyper
+```
+
+## Web Projects
+*Coming soon!*
+
+# Usage
+
+## Client Initialization
+The [Hyper API Client](/classes/default.html) is the default export and needs to be supplied to all calls. It validates and holds your API secret key and an (optional) logger function for development purposes. Import and initialize it as follows:
+
+```js
+import Hyper from 'hyper'
+
+const client = Hyper('my-hyper-secret-key')
+```
+
+## API Calls
+Besides the API Client, each 'category' of endpoints are able to be imported on an as-needed basis via named imports. These are provided as namespaces and their methods correspond to available API calls. You can import them as follows:
+
+```js
+import { License, Link, Payment, Product, Waitlist } from 'hyper'
+
+// Use the API by calling the methods of the imported namespaces
+License.get(...)
+```
+
+If you want to call the namespaces something different, import them directly from their respective directory as follows (you can change the names as you wish):
+
+```js
+import * as License from './license'
+import * as Link from './link'
+import * as Payment from './payment'
+import * as Product from './product'
+import * as Waitlist from './waitlist'
+
+// Use the API by calling the methods of the imported namespaces
+License.get(...)
+```
+## API Responses
+This library is asynchronous, meaning that you'll need to use either `await` or `.then()` to wait for a resolved value. All endpoints return a `Promise` that resolves to a [HyperApiResponse](/interfaces/HyperApiResponse.html). This object contains the response json as-is, straight from the server with the addition of an `ok` boolean property for easy error checking.
+
+Some endpoints resolve to a [HyperApiPaginatedResponse](/interfaces/HyperApiPaginatedResponse.html), a child of [HyperApiResponse](/interfaces/HyperApiResponse.html). This type of response adds an intuitive `.next()` and `.previous` property, which can be used to quickly navigate paginated endpoints. They return `null` once you reach a page that doesn't exist, so use the `has_more` property (supplied on all paginated endpoints) and make sure you aren't calling a page less than 1 before calling either method.

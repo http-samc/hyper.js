@@ -1,19 +1,4 @@
-import { HyperApiClient, HyperApiResponse } from "../types";
-
-// TODO: Convert snake_case keys to camelCase within SDK only
-type LicenseBodyUpdate = {
-    email?: string
-    key?: string
-    unlocked?: boolean
-    metadata?: {
-        [key: string]: string
-    }
-    subscribtion?: {
-        cancel_at_period_end?: boolean
-        current_period_end?: string
-        pause_collection?: boolean
-    }
-}
+import { HyperApiClient, HyperApiResponse, LicenseBodyUpdate } from "../types";
 
 /**
  * @description Updates a license, given its key and new value(s).
@@ -43,7 +28,7 @@ const res = await License.update(client, license, body)
 ```
 */
 
-const update = async (client: HyperApiClient, license: string, body: LicenseBodyUpdate): Promise<HyperApiResponse> => {
+const updateLicense = async (client: HyperApiClient, license: string, body: LicenseBodyUpdate): Promise<HyperApiResponse> => {
     if (!license || typeof license !== 'string') {
         throw Error(`license = "${license}" (type ${typeof license}) is not a truthy string.`);
     }
@@ -62,4 +47,4 @@ const update = async (client: HyperApiClient, license: string, body: LicenseBody
     return resJson
 }
 
-export default update
+export default updateLicense
