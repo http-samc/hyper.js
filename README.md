@@ -14,7 +14,7 @@ npm install @http-samc/hyper
 ## Usage
 
 ### Client Initialization
-The [Hyper API Client](/classes/default.html) is the default export and needs to be supplied to all calls. It validates and holds your API secret key and an (optional) logger function for development purposes. Import and initialize it as follows:
+The [Hyper API Client](/modules.html#Client) is the default export and needs to be supplied to all calls. It validates and holds your API secret key and an (optional) logger function for development purposes. Import and initialize it as follows:
 
 ```js
 import { Client } from 'hyper'
